@@ -86,7 +86,6 @@ function setwebcam()
 function detectCameraTypeAndScheduleProcessing(options)
 {
 	console.log(options);
-	document.getElementById("result").innerHTML="- scanning -";
 
 	if(haveConfiguredType) {
 		setTimeout(captureToCanvas, 500);

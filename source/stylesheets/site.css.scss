@@ -4,3 +4,11 @@
 #qr-canvas {
   display: none;
 }
+
+.header-bar {
+  height: 40px;
+  .logo {
+    display: block;
+    margin: 20px auto;
+  }
+}
