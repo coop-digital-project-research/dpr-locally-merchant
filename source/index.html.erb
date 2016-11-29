@@ -3,9 +3,19 @@ title: Locally Merchant
 ---
 
 <div class="scanner">
-  <div class="preview">
+
+  <canvas class="preview" id="qr-canvas" width="640" height="480">
+  </canvas>
+
+  <div id="outdiv">
+    <video id="v" autoplay></video>
   </div>
 
-  <div class="button-bar">
-  </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+  loadScanner();
+});
+
+</script>

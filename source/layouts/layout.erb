@@ -9,10 +9,33 @@
     <title><%= current_page.data.title || "Locally Merchant" %></title>
 
     <%= stylesheet_link_tag :site %>
+    <%= javascript_include_tag :grid %>
+    <%= javascript_include_tag :version %>
+    <%= javascript_include_tag :detector %>
+    <%= javascript_include_tag :formatinf %>
+    <%= javascript_include_tag :errorlevel %>
+    <%= javascript_include_tag :bitmat %>
+    <%= javascript_include_tag :datablock %>
+    <%= javascript_include_tag :bmparser %>
+    <%= javascript_include_tag :datamask %>
+    <%= javascript_include_tag :rsdecoder %>
+    <%= javascript_include_tag :gf256poly %>
+    <%= javascript_include_tag :gf256 %>
+    <%= javascript_include_tag :decoder %>
+    <%= javascript_include_tag :qrcode %>
+    <%= javascript_include_tag :findpat %>
+    <%= javascript_include_tag :alignpat %>
+    <%= javascript_include_tag :databr %>
     <%= javascript_include_tag :all %>
+
+    <link href="https://fonts.googleapis.com/css?family=Chivo" rel="stylesheet">
+
   </head>
 
   <body class="<%= page_classes %>">
+    <div class="header-bar">
+      <img src="images/locally-logo-inverted.svg" class="logo" />
+    </div>
     <%= yield %>
   </body>
 </html>
