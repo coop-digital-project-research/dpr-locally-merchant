@@ -57,41 +57,39 @@ function initCanvas(w,h)
 
 function setwebcam()
 {
-	var options = true;
-	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
-		navigator.mediaDevices.enumerateDevices()
-			.then(function(devices) {
-				devices.forEach(function(device) {
-					console.log("device.kind:" + device.kind + ", label:" + device.label +" id:" + device.deviceId);
+  var options = true;
+  if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
+    navigator.mediaDevices.enumerateDevices()
+      .then(function(devices) {
+        devices.forEach(function(device) {
+          console.log("device.kind:" + device.kind + ", label:" + device.label +" id:" + device.deviceId);
 
-					if (device.kind === 'videoinput') {
-						if(device.label.toLowerCase().search("back") > -1) {
-							options = {
-								'deviceId': {
-									'exact': device.deviceId
-								},
-								'facingMode':'environment'
-							};
-						}
-					}
-				}.bind(options));
-			});
-	}
-	else {
-		console.warn("no navigator.mediaDevices.enumerateDevices" );
-	}
+          if (device.kind === 'videoinput') {
+            if(device.label.toLowerCase().search("back") > -1) {
+	      console.log("Found back-facing camera, using that.");
+              options = {
+                'deviceId': {
+                  'exact': device.deviceId
+                },
+                'facingMode':'environment'
+              };
 
-	detectCameraTypeAndScheduleProcessing(options);
+	      detectCameraTypeAndScheduleProcessing(options);
+            }
+          }
+        }.bind(options));
+      });
+  }
+  else {
+    console.warn("no navigator.mediaDevices.enumerateDevices" );
+  }
+
+  detectCameraTypeAndScheduleProcessing(options);
 }
 
 function detectCameraTypeAndScheduleProcessing(options)
 {
-	console.log(options);
-
-	if(haveConfiguredType) {
-		setTimeout(captureToCanvas, 500);
-		return;
-	}
+	console.log("camera options:", options);
 
 	var n = navigator;
 	if(n.getUserMedia) {
@@ -128,6 +126,7 @@ function success(stream) {
 
 function error(error) {
 	gUM=false;
+	console.error(error);
 	alert(error);
 	return;
 }
