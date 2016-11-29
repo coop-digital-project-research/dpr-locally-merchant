@@ -101,16 +101,40 @@ a.confirm-button {
   text-decoration: none;
 }
 
+html {
+  height: 100%;
+  min-height: 100%;
 
-.confirm {
-  width: 100%;
-  text-align: center;
+}
 
-  .tick {
-    font-size: 200px;
-  }
+body.confirm {
+  height: 100%;
+  min-height: 100%;
 
-  .success {
+  div.container {
+    z-index: -1;
+    position: relative;
+
+    height: 100%;
+    margin-top: -75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    background: #85b97e;
+    color: white;
+
+    span {
+      margin-top: 20px;
+      width: 100%;
+      display: block;
+      font-size: 30px;
+    }
+
+    img {
+      height: 60px;
+    }
 
   }
 }
