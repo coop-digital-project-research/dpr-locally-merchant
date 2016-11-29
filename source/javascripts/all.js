@@ -62,22 +62,23 @@ function setwebcam()
 		navigator.mediaDevices.enumerateDevices()
 			.then(function(devices) {
 				devices.forEach(function(device) {
+					console.log("device.kind:" + device.kind + ", label:" + device.label +" id:" + device.deviceId);
+
 					if (device.kind === 'videoinput') {
 						if(device.label.toLowerCase().search("back") > -1) {
 							options = {
 								'deviceId': {
-									'exact':device.deviceId
+									'exact': device.deviceId
 								},
 								'facingMode':'environment'
 							};
 						}
 					}
-					console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
-				});
+				}.bind(options));
 			});
 	}
 	else {
-		console.log("no navigator.mediaDevices.enumerateDevices" );
+		console.warn("no navigator.mediaDevices.enumerateDevices" );
 	}
 
 	detectCameraTypeAndScheduleProcessing(options);
@@ -155,4 +156,76 @@ function captureToCanvas() {
 			setTimeout(captureToCanvas, 500);
 		};
 	}
+}
+
+function wireUpKeypadButtons() {
+  var keypadButtons = [].slice.call(document.getElementsByClassName("keypad-button"), 0);
+
+  console.log(keypadButtons);
+
+  keypadButtons.forEach(function(item, i) {
+    item.addEventListener('click', handleKeypadButtonClick);
+  });
+
+
+}
+
+function zeroPad(num, places) {
+    var zero = places - num.toString().length + 1;
+      return Array(+(zero > 0 && zero)).join("0") + num;
+}
+
+function formatPennies(pennies) {
+  var pounds = zeroPad(parseInt(pennies / 100), 1);
+  var pence = zeroPad(pennies % 100, 2);
+
+  console.log("pennies:", pennies, "pounds:", pounds, "pence:", pence);
+  return pounds + '.' + pence;
+}
+
+function handleKeypadButtonClick(event) {
+  var amountInput = document.getElementById('amount-input');
+  var keyPressed = event.target.text;
+
+  var currentPennies = parseInt(amountInput.value.replace(/[^0-9]/g, ""));
+  if(isNaN(currentPennies)) {
+    currentPennies = 0;
+  }
+
+  console.log("currentPennies:", currentPennies);
+  console.log('key pressed:', keyPressed);
+
+  switch(keyPressed) {
+    case "1":
+    case "2":
+    case "3":
+    case "4":
+    case "5":
+    case "6":
+    case "7":
+    case "8":
+    case "9":
+    case "0": {
+      var newPennies = (currentPennies * 10) + parseInt(keyPressed);
+      amountInput.value = formatPennies(newPennies);
+      break;
+    }
+
+    case "00": {
+      var newPennies = (currentPennies * 100);
+      amountInput.value = formatPennies(newPennies);
+      break;
+    }
+
+    case "X": {
+      var newPennies = parseInt(currentPennies / 10);
+      amountInput.value = formatPennies(newPennies);
+
+      break;
+    }
+
+    default: {
+    }
+
+  }
 }
