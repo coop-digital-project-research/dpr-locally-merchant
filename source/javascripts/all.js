@@ -20,7 +20,7 @@ var videoTag = null;
 
 function handleQrCodeData(a)
 {
-	alert(a);
+  window.location.assign(encodeURI('/enter-amount.html?qrcode=' + a));
 }
 
 function loadScanner()
