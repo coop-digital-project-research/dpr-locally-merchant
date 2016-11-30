@@ -1,6 +1,9 @@
 @charset "utf-8";
 @import "normalize";
 
+$green: #86ba7f;
+$orange: #e9a45b;
+
 #qr-canvas {
   display: none;
 }
@@ -11,7 +14,7 @@ video#v {
 }
 
 .header-bar {
-  background: #e9a45b;
+  background: $orange;
 
   .logo {
     display: block;
@@ -21,7 +24,7 @@ video#v {
 }
 
 .instructions {
-  background: #86ba7f;
+  background: $green;
   height: 40px;
   text-align: center;
   line-height: 40px;
@@ -136,5 +139,37 @@ body.confirm {
       height: 60px;
     }
 
+  }
+}
+
+body.index {
+  height: 100%;
+
+  .container {
+    height: 100%;
+    position: absolute;
+    background: $green;
+
+    a {
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      color: black;
+      width: 100%;
+    }
+
+    a.touch-instructions {
+      font-size: 30px;
+      padding-top: 150px;
+    }
+
+    a.scan-qr-code {
+      position: fixed; 
+      bottom: 0%;
+
+      height: 48px;
+      line-height: 48px;
+      background: $orange;
+    }
   }
 }
