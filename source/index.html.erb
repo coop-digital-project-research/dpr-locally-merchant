@@ -2,24 +2,13 @@
 title: Locally Merchant
 ---
 
-<div class="scanner">
+<div class="container">
+  <a class="touch-instructions" href="/enter-amount.html">
+    Touch the customer's Locally card <br/>against the phone
+  </a>
 
-  <div class="instructions">
-    Scan the customer's Locally card or app
-  </div>
-
-  <canvas class="preview" id="qr-canvas" width="640" height="480">
-  </canvas>
-
-  <div id="outdiv">
-    <video id="v" autoplay></video>
-  </div>
-
+  <a class="scan-qr-code" href="/scan.html">
+    Or scan their QR code
+  </a>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function(event) {
-  loadScanner();
-});
-
-</script>
