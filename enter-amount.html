@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Locally Merchant</title>
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+    <script src="/javascripts/grid.js"></script>
+    <script src="/javascripts/version.js"></script>
+    <script src="/javascripts/detector.js"></script>
+    <script src="/javascripts/formatinf.js"></script>
+    <script src="/javascripts/errorlevel.js"></script>
+    <script src="/javascripts/bitmat.js"></script>
+    <script src="/javascripts/datablock.js"></script>
+    <script src="/javascripts/bmparser.js"></script>
+    <script src="/javascripts/datamask.js"></script>
+    <script src="/javascripts/rsdecoder.js"></script>
+    <script src="/javascripts/gf256poly.js"></script>
+    <script src="/javascripts/gf256.js"></script>
+    <script src="/javascripts/decoder.js"></script>
+    <script src="/javascripts/qrcode.js"></script>
+    <script src="/javascripts/findpat.js"></script>
+    <script src="/javascripts/alignpat.js"></script>
+    <script src="/javascripts/databr.js"></script>
+    <script src="/javascripts/all.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Chivo" rel="stylesheet">
+
+  </head>
+
+  <body class="enter-amount">
+    <div class="header-bar">
+      <img src="images/locally-logo-inverted.svg" class="logo" />
+    </div>
+    <div class="container">
+  <div class="instructions">
+    Enter total sale amount:
+
+  </div>
+
+
+  <form class="amount-and-keypad">
+    <input id="amount-input" value="0.00" type="text" pattern="[0-9]+(\.[0-9]{2})?">
+
+    <div class="keypad">
+      <div class="table-row">
+        <div class="table-cell three-columns"><a class="keypad-button" href="#">1</a></div>
+        <div class="table-cell three-columns"><a class="keypad-button" href="#">2</a></div>
+        <div class="table-cell three-columns"><a class="keypad-button" href="#">3</a></div>
+      </div>
+
+      <div class="table-row">
+        <div class="table-cell three-columns"><a class="keypad-button" href="#">4</a></div>
+        <div class="table-cell three-columns"><a class="keypad-button" href="#">5</a></div>
+        <div class="table-cell three-columns"><a class="keypad-button" href="#">6</a></div>
+      </div>
+
+      <div class="table-row">
+        <div class="table-cell three-columns"><a class="keypad-button" href="#">7</a></div>
+        <div class="table-cell three-columns"><a class="keypad-button" href="#">8</a></div>
+        <div class="table-cell three-columns"><a class="keypad-button" href="#">9</a></div>
+      </div>
+
+      <div class="table-row">
+        <div class="table-cell three-columns"><a class="keypad-button" href="#">0</a></div>
+        <div class="table-cell three-columns"><a class="keypad-button" href="#">00</a></div>
+        <div class="table-cell three-columns"><a class="keypad-button" href="#">X</a></div>
+      </div>
+
+    </div>
+
+    <div><a class="confirm-button" href="/confirm.html"><img src="images/tick.svg"</img></a></div>
+
+  </form>
+
+
+  <script>
+    wireUpKeypadButtons();
+  </script>
+
+
+</div>
+
+  </body>
+</html>
